@@ -1,12 +1,9 @@
-# bitaxe-power-analysis
-Bash script to monitor up to 4 Bitaxe miners, sending power, hashrate, and temp reports to Telegram every 30 minutes.
-
 # Bitaxe Power Analysis
 
-A Bash script to monitor Bitaxe miners, delivering detailed telemetry on power consumption, hashrate, efficiency, and temperatures to Telegram every 30 minutes.
+A Bash script to monitor up to 4 Bitaxe miners, delivering detailed telemetry on power consumption, hashrate, efficiency, and temperatures to Telegram every 30 minutes.
 
-**Repository**: `bitaxe-power-analysis`  
-**Description**: Bash script to monitor Bitaxe miners, sending power, hashrate, and temperature reports to Telegram every 30 minutes.  
+**Repository**: bitaxe-power-analysis  
+**Description**: Bash script to monitor up to 4 Bitaxe miners, sending power, hashrate, and temperature reports to Telegram every 30 minutes.  
 **License**: MIT License  
 **Credits**: Crafted by @chieb_sol vibecoding with @grok
 
@@ -55,7 +52,7 @@ The script sends reports to a Telegram chat. Follow these steps to set up your T
      ```
      I need help getting my Telegram Chat ID for a bot. I’ve created a bot with BotFather and sent it a message. How do I find the Chat ID?
      ```
-     - The AI or `@GetIDsBot` will provide your **Chat ID** (e.g., `123456789`).
+   - The AI or `@GetIDsBot` will provide your **Chat ID** (e.g., `123456789`).
 
 3. **Test Telegram Connectivity**:
    - Replace `YOUR_BOT_TOKEN` and `YOUR_CHAT_ID` in the command below and run it on your node:
@@ -73,7 +70,7 @@ Edit `power_analysis.sh` using a text editor (e.g., `nano power_analysis.sh`):
 
 - **Miner Settings**:
   - `UserMiners`: Number of miners to monitor (1–4).
-  - `MinerIPAddress1`–`MinerIPAddress4`: IP addresses of your Bitaxe miners (e.g., `192.168.1.3`) or `NULL` for unused slots.
+  - `MinerIPAddress1`–`MinerIPAddress4`: IP addresses of your Bitaxe miners (e.g., `YOUR_MINER_IP`) or `NULL` for unused slots.
   - Example:
     ```bash
     UserMiners=1
@@ -163,16 +160,113 @@ The `power_analysis.sh` script generates three structured data files—two CSV f
   ```bash
   cat ~/logs/power_analysis/192_168_1_106/power_metrics.jsonl | jq .
 
-## Installation
+  Customization: Modify the script’s log_data function to add or remove fields if needed for specific analyses.
 
-1. **Download the Script**:
-   - Clone or download `power_analysis.sh` from this repository.
-   - Example (if cloning):
-     ```bash
-     git clone https://github.com/your-username/bitaxe-power-analysis.git
-     cd bitaxe-power-analysis
-     ```
+Installation
+Download the Script:
+Clone or download power_analysis.sh from this repository.
 
-2. **Make Executable**:
-   ```bash
-   chmod +x power_analysis.sh
+Example:
+bash
+
+git clone https://github.com/chiefbsol-cloud/bitaxe-power-analysis.git
+cd bitaxe-power-analysis
+
+Make Executable:
+bash
+
+chmod +x power_analysis.sh
+
+Configure the Script:
+Edit power_analysis.sh:
+bash
+
+nano power_analysis.sh
+
+Update UserMiners, MinerIPAddress1–MinerIPAddress4, TELEGRAM_CHAT_ID, and TELEGRAM_BOT_TOKEN with your values.
+
+Testing
+Run Manually:
+bash
+
+./power_analysis.sh >> ~/logs/power_analysis/cron.log 2>&1
+
+Check your Telegram chat for a report with metrics (e.g., hashrate, efficiency, temperatures).
+
+Example message:
+
+📊 Hourly Report 📊
+⛏️ Miner:           <hostname>
+🌐 IP Address:      192.168.1.106
+🕒 Uptime:          Xh Ym Zs
+🤖 Hashrate:        X.XX TH/s
+💡 Efficiency:      XX.XX J/TH
+🌡️ Ambient Temp:    XX.XX°C
+🔥 ASIC Temp:       XX.XX°C
+🔌 Vol Reg Temp:    XX.XX°C
+💨 Fan Speed:       XX.XX%
+──────────────
+⭐ BestDiff:        X.XM
+🌟 DiffBoot:        XXXK
+📈 Shares:          XXX
+⏳ AvgShares/hr:    XXX.XX
+🕒 Time: HH:MM:SS UTC
+📅 Date: Day Mon DD YYYY
+
+Verify logs:
+bash
+
+ls -l ~/logs/power_analysis/192_168_1_106/
+cat ~/logs/power_analysis/192_168_1_106/power_analysis.log
+
+Troubleshoot Errors:
+Check error log:
+bash
+
+cat ~/logs/power_analysis/192_168_1_106/power_analysis_error.log
+
+Common issues:
+API Failure: Verify miner IP with curl -s http://YOUR_MINER_IP/api/system/info | jq ..
+
+Telegram Failure: Retest Telegram connectivity (see above).
+
+Dependencies: Ensure jq, curl, and bc are installed.
+
+Setting Up a Cron Job
+To run the script every 30 minutes, configure a cron job:
+Edit Crontab:
+bash
+
+crontab -e
+
+Add Cron Job:
+Append:
+bash
+
+*/30 * * * * /bin/bash /home/umbrel/bitaxe-power-analysis/power_analysis.sh >> /home/umbrel/logs/power_analysis/cron.log 2>&1
+
+This runs the script every 30 minutes, logging output to ~/logs/power_analysis/cron.log. Replace /home/umbrel/bitaxe-power-analysis/power_analysis.sh with your script’s path if different.
+
+Verify Cron Job:
+bash
+
+crontab -l
+
+Wait for the next 30-minute interval (e.g., 12:00, 12:30) and check Telegram for reports. If reports don’t appear, check ~/logs/power_analysis/cron.log for errors.
+
+Notes
+Static IPs: Ensure your Bitaxe miners have fixed IPs via DHCP to prevent connection issues.
+
+Log Management: Logs recycle every 336 hours (14 days) by default to manage disk space. Adjust RECYCLE_*_HOURS if needed.
+
+Security: Do not share your Telegram bot token or chat ID publicly. Use placeholders in shared scripts.
+
+Support: For issues, open a GitHub issue or contact @chieb_sol
+ via Telegram (link TBD).
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+Contact
+For questions or contributions, open a GitHub issue or message @chieb_sol
+ on Telegram (link TBD). Contributions are welcome!
+
