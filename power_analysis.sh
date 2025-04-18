@@ -226,11 +226,15 @@ collect_data() {
     AVG_SHARES_PER_HOUR="N/A"
   fi
 
-  # Fetch ambient temp from Open-Meteo (London)
-  AMBIENT_TEMP=$(curl -s "https://api.open-meteo.com/v1/forecast?latitude=51.5074&longitude=-0.1278&current=temperature_2m&timezone=UTC" | jq -r '.current.temperature_2m' 2>>"$error_log" || echo "N/A")
-  if [[ "$AMBIENT_TEMP" == "N/A" ]]; then
-    echo "[$TIMESTAMP] Warning: Failed to fetch ambient temp." >>"$error_log"
-  fi
+# User-defined coordinates for ambient temperature (replace with your location, e.g., 51.5074,-0.1278 for Trafalgar Square, London)
+LATITUDE="51.5074"
+LONGITUDE="-0.1278"
+
+# Fetch ambient temperature from Open-Meteo API
+AMBIENT_TEMP=$(curl -s "https://api.open-meteo.com/v1/forecast?latitude=$LATITUDE&longitude=$LONGITUDE&current=temperature_2m&timezone=U>
+if [[ "$AMBIENT_TEMP" == "N/A" ]]; then
+    echo "[$TIMESTAMP] Warning: Failed to fetch ambient temp from Open-Meteo API (latitude=$LATITUDE, longitude=$LONGITUDE)." >>"$error_>
+fi
 }
 
 # Function to log data
