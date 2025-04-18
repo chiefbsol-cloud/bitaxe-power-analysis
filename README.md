@@ -87,6 +87,15 @@ Edit `power_analysis.sh` using a text editor (e.g., `nano power_analysis.sh`):
     TELEGRAM_CHAT_ID="YOUR_CHAT_ID"
     TELEGRAM_BOT_TOKEN="YOUR_BOT_TOKEN"
     ```
+    
+- **Ambient Temperature Settings**:
+  - `LATITUDE`, `LONGITUDE`: Coordinates for fetching ambient temperature via Open-Meteo API (e.g., `51.5074`, `-0.1278` for London). Set these to your location for accurate data, but do not commit personal coordinates to a public repository. To find your coordinates, search your city or address on Google Maps, right-click the location, and copy the latitude and longitude (e.g., `40.7128,-74.0060` for New York). Alternatively, use a site like [latlong.net](https://www.latlong.net).
+  - Example:
+    ```bash
+    LATITUDE="YOUR_LATITUDE"
+    LONGITUDE="YOUR_LONGITUDE"
+    ```
+    
 - **Attachment Settings**:
   - `ATTACH_*`: Set to `YES` to attach logs to Telegram messages, `NO` to disable (e.g., `ATTACH_POWER_ANALYSIS_LOG="YES"`).
   - Warning: Attached logs must stay under 50 MB (Telegram limit). Use recycling periods of 336 hours or less.
