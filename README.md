@@ -13,6 +13,8 @@ The `power_analysis.sh` script monitors up to four Bitaxe miners, fetching real-
 
 This script has been tested on a DIY Raspberry Pi 5 (8GB) running Umbrel, ensuring compatibility with lightweight Linux environments.
 
+This is v2 which now displays the Pool Difficulty
+
 **Disclaimer**: Use this script at your own risk. The authors assume no liability for any issues arising from its use. Ensure you understand the script’s functionality and test it thoroughly before deployment.
 
 ## Prerequisites
