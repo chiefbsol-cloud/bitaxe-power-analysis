@@ -9,11 +9,34 @@ A Bash script to monitor up to 4 Bitaxe miners, delivering detailed telemetry on
 
 ## Overview
 
-The `power_analysis.sh` script monitors up to four Bitaxe miners, fetching real-time metrics via their API and sending formatted reports to a Telegram chat. It logs data in text, CSV, and JSONL formats for analysis and supports log recycling to manage disk space. Designed for 24/7 operation on a Bitcoin node or server, it assumes static IP addresses and basic command-line proficiency.
+The `power_analysis.sh` script monitors up to four Bitaxe miners, fetching real-time metrics via their API and sending formatted reports to a Telegram chat. It logs data in text, CSV, and JSONL formats for analysis and supports log recycling to manage disk space. Designed for 24/7 operation on a Bitcoin node or server, it assumes static IP addresses and basic command-line proficiency. Read below to see the different versions available.
 
 This script has been tested on a DIY Raspberry Pi 5 (8GB) running Umbrel, ensuring compatibility with lightweight Linux environments.
 
 This is v2 which now displays the Pool Difficulty
+
+There is an update (power_analysis_nerd.sh) which improves compatibility to support both Bitaxe Gamma and NerdQAxe++ devices with unified handling.
+
+✔️ Key Enhancements:
+Device Type Detection: Uses http://<IP>/api/system/info to detect deviceModel.
+
+NerdQAxe++ Compatibility:
+
+Skips stratumDiff extraction and display, as this model does not expose it via API.
+
+Handles missing fields like isUsingFallbackStratum and fallbackStratumURL without failure.
+
+Bitaxe Compatibility:
+
+Retains full support for pool difficulty, fallback status, and stratumDiff.
+
+Telegram Output Logic:
+
+Automatically hides the "Stratum Diff" line for NerdQAxe++ units.
+
+Displays active pool correctly, even when fallback fields are absent.
+
+This ensures robust, fault-tolerant operation across both device families without breaking core logging, analysis, or Telegram integration.
 
 **Disclaimer**: Use this script at your own risk. The authors assume no liability for any issues arising from its use. Ensure you understand the script’s functionality and test it thoroughly before deployment.
 
