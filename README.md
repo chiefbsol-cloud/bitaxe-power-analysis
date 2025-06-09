@@ -13,28 +13,26 @@ The `power_analysis.sh` script monitors up to four Bitaxe miners, fetching real-
 
 This script has been tested on a DIY Raspberry Pi 5 (8GB) running Umbrel, ensuring compatibility with lightweight Linux environments.
 
-This is v2 which now displays the Pool Difficulty
+This script (power_analysis_nerd.sh) now fully supports both:
 
-There is an update (power_analysis_nerd.sh) which improves compatibility to support both Bitaxe Gamma and NerdQAxe++ devices with unified handling.
+✅ Bitaxe Gamma
 
-✔️ Key Enhancements:
-Device Type Detection: Uses http://<IP>/api/system/info to detect deviceModel.
+✅ NerdQAxe++ (⚠️ requires firmware v1.0.30 or later)
 
-NerdQAxe++ Compatibility:
+⚠️ Important:
+NerdQAxe++ must be running firmware version v1.0.30 or higher.
+Earlier versions do not expose poolDifficulty via the API, which is required for correct pool stats.
 
-Skips stratumDiff extraction and display, as this model does not expose it via API.
+✔️ Features
+Automatically detects device model
 
-Handles missing fields like isUsingFallbackStratum and fallbackStratumURL without failure.
+Retrieves and displays actual pool difficulty:
 
-Bitaxe Compatibility:
+Uses poolDifficulty (NerdQAxe++)
 
-Retains full support for pool difficulty, fallback status, and stratumDiff.
+Falls back to stratumDiff (Bitaxe)
 
-Telegram Output Logic:
-
-Automatically hides the "Stratum Diff" line for NerdQAxe++ units.
-
-Displays active pool correctly, even when fallback fields are absent.
+Unified log and Telegram output
 
 This ensures robust, fault-tolerant operation across both device families without breaking core logging, analysis, or Telegram integration.
 
