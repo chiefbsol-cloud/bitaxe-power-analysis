@@ -13,7 +13,7 @@ The `power_analysis.sh` script monitors up to four Bitaxe miners, fetching real-
 
 This script has been tested on a DIY Raspberry Pi 5 (8GB) running Umbrel, ensuring compatibility with lightweight Linux environments.
 
-This script (power_analysis_nerd.sh) now fully supports both:
+This script (power_analysis.sh) now fully supports both:
 
 ✅ Bitaxe Gamma
 
