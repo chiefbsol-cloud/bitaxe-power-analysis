@@ -9,8 +9,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 # Configuration
 # Miner Settings
 UserMiners=2  # Number of miners to monitor (1-4)
-MinerIPAddress1=192.168.1.106  # IP address of miner 1 or NULL
-MinerIPAddress2=192.168.1.171  # IP address of miner 2 or NULL
+MinerIPAddress1=NULL           # IP address of miner 1 or NULL
+MinerIPAddress2=NULL           # IP address of miner 2 or NULL
 MinerIPAddress3=NULL           # IP address of miner 3 or NULL
 MinerIPAddress4=NULL           # IP address of miner 4 or NULL
 
