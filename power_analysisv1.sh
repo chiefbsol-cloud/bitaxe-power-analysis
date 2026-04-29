@@ -15,8 +15,8 @@ MinerIPAddress3=NULL           # IP address of miner 3 or NULL
 MinerIPAddress4=NULL           # IP address of miner 4 or NULL
 
 # General Settings
-TELEGRAM_CHAT_ID="7110505856"
-TELEGRAM_BOT_TOKEN="7612785414:AAHBN0iJ_CckRMqkIVfCf-oavX1wz_pym7E"
+TELEGRAM_CHAT_ID="YOUR_TELEGRAM_CHAT_ID"
+TELEGRAM_BOT_TOKEN="YOUR_TELEGRAM_BOT_TOKEN"
 VREG_TEMP_LIMIT=65  # Voltage regulator temp limit (°C)
 DEBUG=false  # Set to true for console output
 
