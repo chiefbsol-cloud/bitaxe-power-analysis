@@ -5,7 +5,7 @@ A Bash script to monitor up to 4 Bitaxe miners, delivering detailed telemetry on
 **Repository**: bitaxe-power-analysis  
 **Description**: Bash script to monitor up to 4 Bitaxe miners, sending power, hashrate, and temperature reports to Telegram every 30 minutes.  
 **License**: MIT License  
-**Credits**: Crafted by @chieb_sol vibecoding with @grok
+**Credits**: Crafted by @chieb_sol vibecoding with Claude and @grok
 
 ## Overview
 
