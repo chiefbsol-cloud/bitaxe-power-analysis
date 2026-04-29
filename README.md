@@ -9,7 +9,7 @@ A Bash script to monitor up to 4 Bitaxe miners, delivering detailed telemetry on
 
 ## Overview
 
-The `power_analysis.sh` script monitors up to four Bitaxe miners, fetching real-time metrics via their API and sending formatted reports to a Telegram chat. It logs data in text, CSV, and JSONL formats for analysis and supports log recycling to manage disk space. Designed for 24/7 operation on a Bitcoin node or server, it assumes static IP addresses and basic command-line proficiency. Read below to see the different versions available.
+The `power_analysisv1.sh` script monitors up to four Bitaxe miners, fetching real-time metrics via their API and sending formatted reports to a Telegram chat. It logs data in text, CSV, and JSONL formats for analysis and supports log recycling to manage disk space. Designed for 24/7 operation on a Bitcoin node or server, it assumes static IP addresses and basic command-line proficiency. Read below to see the different versions available.
 
 This script has been tested on a DIY Raspberry Pi 5 (8GB) running Umbrel, ensuring compatibility with lightweight Linux environments.
 
